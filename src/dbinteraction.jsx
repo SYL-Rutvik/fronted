@@ -16,21 +16,22 @@ export default function DBinteraction() {
         }
         
     }
-    const addUser = async () => {
-        try {
-            const res = await axios.post("http://localhost:3000/users",{
-                name,
-                run,
-                country
-            });
-            setUser(res.data)
-
-            
-        }
-        catch(err) {
-            console.log(err);
-        }
+    const updateuser = async () => {
+    // name, run, country, id
+    try {
+      const req = await axios.post(`http://localhost:3000/users/update`, {
+        name,
+        run,
+        country,
+        id,
+      });
+      const res = await axios.get("http://localhost:3000/users");
+      setUser(res.data);
+    } catch (err) {
+      console.log(err);
     }
+  };
+
     const updateUser = async () => {
         try {
             
